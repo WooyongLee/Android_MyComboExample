@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.MyComboEx.AppBarOverlay">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="?actionBarSize"
+            android:padding="@dimen/appbar_padding"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
+
+        <TextView
+            android:id="@+id/timeTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/grid_line_color">
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/tapTestButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tab">
+            </Button>
+
+            <Button
+                android:id="@+id/showChartViewButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chart">
+            </Button>
+
+            <Button
+                android:id="@+id/wifiButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wifi / 테더링">
+            </Button>
+
+            <Button
+                android:id="@+id/tetheringButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" ... ">
+            </Button>
+        </LinearLayout>
+
+        <include
+            android:id="@+id/chartLayout"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            layout="@layout/chart_layout" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_marginBottom="16dp"
+        android:visibility="invisible"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
