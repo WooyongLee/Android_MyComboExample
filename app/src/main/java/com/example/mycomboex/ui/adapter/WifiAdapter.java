@@ -34,15 +34,24 @@ public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.WifiViewHolder
     @Override
     public WifiViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // LayoutInflater :: XML에 미리 정의해둔 틀을 실제 메모리에 올려주는 역할, XML의 Resource를 View 객체로 반환
-        //
-        @SuppressLint("ResourceType") View itemView = LayoutInflater.from(parent.getContext()).inflate(R.xml.wifi_recyclerview_item , parent, false);
         mContext = parent.getContext();
-        return new WifiViewHolder(itemView);
+        
+        // Layout Inflater 설정
+        LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        // RecyclerView Item 을 ViewHolder에 설정
+        @SuppressLint("ResourceType") View view = inflater.inflate(R.xml.wifi_recyclerview_item, parent, false);
+        WifiAdapter.WifiViewHolder viewHolder = new WifiViewHolder(view);
+
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull WifiViewHolder holder, int position) {
-        holder.setItem(items.get(position));
+        // ViewHolder를 어떠한 데이터와 연결할 때 호출하는 method, ViewHolder 객체들의 Layout을 채워주는 역할
+        // Data 순서에 맞게 Item Layout 을 Binding 할 수 있음
+        ScanResult item = items.get(position);
+        holder.setItem(item);
     }
 
     @Override
@@ -65,10 +74,12 @@ public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.WifiViewHolder
                 @Override
                 public void onClick(View view)
                 {
+                    // 현재 Click Event가 발생된 지점의 Position을 알아냄
                     int pos = getAdapterPosition();
                     if ( pos != RecyclerView.NO_POSITION)
                     {
-                         String ssid = items.get(pos).SSID;
+                        // List 에서 Item 참조
+                        String ssid = items.get(pos).SSID;
                          // PW 입력 Dialog 호출
                         WifiDialog customDialog = new WifiDialog(mContext);
                         customDialog.callFunction(ssid);

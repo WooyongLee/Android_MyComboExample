@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mycomboex.databinding.WifiLayoutBinding;
@@ -54,7 +55,13 @@ public class WifiActivity extends AppCompatActivity implements AutoPermissionsLi
 
     private void scanSuccess()
     {
+        // WifiManager에서 Scan한 결과를 리스트로 반환
         List<ScanResult> results = wifiManager.getScanResults();
+
+        // LayoutManager를 LinearLayoutManager로 지정, orientation을 Vertical로 설정 + Reverse Layout : false
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+        // Scan Result를 Adapter에 설정 후, recyclerView에 setAdapter
         mAdapter = new WifiAdapter(results);
         recyclerView.setAdapter(mAdapter);
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="원격 서비스 패키지명: "/>
+
+        <TextView
+            android:id="@+id/packagenametxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="N/A"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/startbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="원격 서비스 실행"/>
+
+    <Button
+        android:id="@+id/getbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="패키지명 가져오기"/>
+
+    <Button
+        android:id="@+id/stopbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="원격 서비스 종료"/>
+
+</LinearLayout>
